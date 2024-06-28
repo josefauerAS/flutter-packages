@@ -103,6 +103,7 @@ class AdaptiveScaffold extends StatefulWidget {
     this.navigationRailWidth = 72,
     this.extendedNavigationRailWidth = 192,
     this.appBarBreakpoint,
+    this.padding = const EdgeInsets.all(8),
   }) : assert(
           destinations.length >= 2,
           'At least two destinations are required',
@@ -245,6 +246,9 @@ class AdaptiveScaffold extends StatefulWidget {
   /// The width used for the internal extended [NavigationRail] at the large
   /// [Breakpoint].
   final double extendedNavigationRailWidth;
+
+  /// The padding for the navigation rail
+  final EdgeInsets? padding;
 
   /// Callback function for when the index of a [NavigationRail] changes.
   static WidgetBuilder emptyBuilder = (_) => const SizedBox();
@@ -558,6 +562,7 @@ class _AdaptiveScaffoldState extends State<AdaptiveScaffold> {
                 unselectedIconTheme: navRailTheme.unselectedIconTheme,
                 selectedLabelTextStyle: navRailTheme.selectedLabelTextStyle,
                 unSelectedLabelTextStyle: navRailTheme.unselectedLabelTextStyle,
+                padding: widget.padding ?? const EdgeInsets.all(8),
               ),
             ),
             widget.largeBreakpoint: SlotLayout.from(
@@ -578,6 +583,7 @@ class _AdaptiveScaffoldState extends State<AdaptiveScaffold> {
                 unselectedIconTheme: navRailTheme.unselectedIconTheme,
                 selectedLabelTextStyle: navRailTheme.selectedLabelTextStyle,
                 unSelectedLabelTextStyle: navRailTheme.unselectedLabelTextStyle,
+                padding: widget.padding ?? const EdgeInsets.all(8),
               ),
             ),
           },
